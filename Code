@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+A =  np.array(plt.imread('aerial.tif')).astype('f')/255
+B = A.copy()
+rows = A.shape[0]
+gamma=5
+#Adjust Gamma according to your usage/Application
+cols = A.shape[1]
+print(A.shape)
+print(rows,cols)
+for x in range(rows):
+  for y in range(cols):
+
+      b=B[x,y]**gamma
+      B[x,y]=b
+
+
+fig = plt.figure()
+ax1 = fig.add_subplot(1,2,1)
+plt.title("Original Image")
+ax1.imshow(A,cmap='gray',vmin=0,vmax=1)
+ax2 = fig.add_subplot(1,2,2)
+plt.title(" transformed Image")
+ax2.imshow(B,cmap='gray',vmin=0,vmax=1)
